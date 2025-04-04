@@ -1,4 +1,4 @@
-name: satio workflow
+name: alma ruff workflow
 
 on: 
   pull_request:
