@@ -27,7 +27,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.version]
-path = "src/satio/_version.py"
+path = "src/_version.py"
 
 [tool.hatch.build.targets.sdist]
 exclude = [
