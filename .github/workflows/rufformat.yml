@@ -1,0 +1,36 @@
+name: satio workflow
+
+on: 
+  pull_request:
+    # all branches
+    branches:
+      - '*'
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  format-lint:
+    runs-on: ubuntu-latest
+    #almalinux container
+    container:
+      image: almalinux:9
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup build environment
+      uses: lagamura/gitruff@main  # Reuse the composite action    
+    - name: check_dir
+      run: |
+        ls -la
+        pwd
+        
+    - name: Ruff linter
+      run: |
+        ruff --version
+        ruff check . --show-settings
+    
+    - name: Ruff format check
+      run: |
+        ruff format --check --isolated --exclude *.ipynb -v .
